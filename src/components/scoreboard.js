@@ -22,12 +22,25 @@ const Scoreboard = (props) => {
         return b.score - a.score;
     });
 
-    const scoresList = scores.map((competitor) => {
-        return <li key={competitor.name}> {competitor.name}: {competitor.score} poäng </li>
+    const scoresList = scores.map((competitor, index) => {
+        if (index + 1 > 9) {
+            return <li key={competitor.name} className="scorelist-item"> {index+1}. <b>{competitor.name}</b>: {competitor.score} poäng </li>
+        } else {
+            return <li key={competitor.name} className="scorelist-item"> 0{index+1}. <b>{" " + competitor.name}</b>: {competitor.score} poäng </li>
+        }
+        
     });
     console.log(scores);
 
-    return <ol className="scoreboard">{scoresList}</ol>;
+    return (
+        <div className="scoreboard">
+            <h1 className="header">Poängställning</h1>
+            <ul className="scorelist">{scoresList}</ul> 
+        </div>
+        
+    
+    );
+
 
 
     

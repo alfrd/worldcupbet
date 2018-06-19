@@ -1,9 +1,30 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Courier', sans-serif;
+  background-color: #FCFFF5;
+  color: #193441;
 }
 
 .scoreboard {
   text-align: left;
+  font-size: 1em;
+  margin-left: 2em;
+}
+.scorelist {
+  list-style-type: none;
+  -webkit-padding-start: 0;
+}
+.scorelist-item {
+  padding-top: 0.25em;
+}
+
+
+.center {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.app {
+  margin: 0 auto;
 }
