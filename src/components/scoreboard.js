@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { list } from 'postcss';
 
 const Scoreboard = (props) => {
     
@@ -35,7 +34,7 @@ const Scoreboard = (props) => {
     return (
         <div className="scoreboard">
             <h1 className="header">Poängställning</h1>
-            <ul className="scorelist">{scoresList}</ul> 
+            <ul className="scorelist col-md-4 list-group">{scoresList}</ul> 
         </div>
         
     

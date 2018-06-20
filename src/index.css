@@ -7,6 +7,7 @@ body {
 }
 
 .scoreboard {
+  float:left;
   text-align: left;
   font-size: 1em;
   margin-left: 2em;
@@ -26,5 +27,32 @@ body {
 }
 
 .app {
+  max-width: 960px;
   margin: 0 auto;
+}
+
+.nextgame {
+  min-width: 400px;
+  float: left;
+}
+
+.game {
+  text-align: center;
+  border: 1px solid #193441;
+  border-radius: 3px;
+}
+
+.nextgame h2 {
+  margin-bottom: 0;
+  text-align: center;
+
+}
+.ettkrysstva {
+  min-height: 100px;
+  text-align: center;
+}
+.prediction {
+  width: 33%;
+  float: left;
+  
 }
