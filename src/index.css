@@ -55,11 +55,20 @@ body {
 
 }
 .ettkrysstva {
-  min-height: 100px;
+  
   text-align: center;
 }
 .prediction {
   width: 33%;
-  float: left;
-  
+  display: inline-block;
+  vertical-align: top;
+}
+.bettare {
+  padding: 0;
+}
+.bettare-item {
+  padding: 0;
+  font-size: 0.75em;
+  opacity: 0.7;
+  list-style-type: none;
 }
