@@ -1,6 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PredictionList from './prediction_list';
 
 const NextGame = (props) => {
+    if (props.matchData[0] == null) {
+        console.log("UNDEFINED");
+        return <div>Loading...</div>;
+    }
+
+
+    var nextGame = {};
+    var gameNbr = 0;
+
+
+    for(var i = 0; i < props.matchData.length; i++) {
+        var game = props.matchData[i];
+        if(game.status === "in progress" || game.status === "future") {
+            nextGame = game;
+            gameNbr = i+1;
+            break;
+        }
+    }
+    console.log();
+    const teams = nextGame.home_team.code + "-" + nextGame.away_team.code
+
     var ett = 0;
     var kryss = 0;
     var två = 0;
@@ -10,28 +32,16 @@ const NextGame = (props) => {
     var bettare2 = [];
 
     props.competitors.map((bet) => {
-        if(bet[props.gameNbr] === 1 ) {
+        if(bet[gameNbr] === 1 ) {
             ett += 1;
             bettare1.push(bet[0]);
-        } else if (bet[props.gameNbr] === "x") {
+        } else if (bet[gameNbr] === "x") {
             kryss += 1;
             bettareX.push(bet[0]);
         } else {
             två += 1;
             bettare2.push(bet[0]);
         }
-    });
-
-    const bettare1List = bettare1.map((bettare) => {
-        return <li className="bettare-item">{bettare}</li>
-    });
-
-    const bettareXList = bettareX.map((bettare) => {
-        return <li className="bettare-item">{bettare}</li>
-    });
-
-    const bettare2List = bettare2.map((bettare) => {
-        return <li className="bettare-item">{bettare}</li>
     });
 
     ett = Math.round((ett / 14)*100);
@@ -43,36 +53,31 @@ const NextGame = (props) => {
             <h1>Nästa match</h1>
 
             <div className="game">
-                <h2>{props.teams}</h2>
+                <h2>{teams}</h2>
                 <div className="ettkrysstva">
                     <div className="prediction">
                         <h3>1</h3> 
                         {ett}%
-                        <ul className="bettare">
-                            {bettare1List}
-                        </ul>
+                        <PredictionList bettare = {bettare1} />
                     </div>
                     
                     <div className="prediction">
                         <h3>x</h3> 
                         {kryss}%
-                        <ul className="bettare">
-                            {bettareXList}
-                        </ul>
+                        <PredictionList bettare = {bettareX} />
                     </div>
 
                     <div className="prediction">
                         <h3>2</h3> 
                         {två}%
-                        <ul className="bettare">
-                            {bettare2List}
-                        </ul>
+                        <PredictionList bettare = {bettare2} />
                     </div>
                 </div>
         
             </div>
         </div>
     );
+    
 }
 
 export default NextGame;
