@@ -23,13 +23,12 @@ const Scoreboard = (props) => {
 
     const scoresList = scores.map((competitor, index) => {
         if (index + 1 > 9) {
-            return <li key={competitor.name} className="scorelist-item"> {index+1}. <b>{competitor.name}</b>: {competitor.score} poäng </li>
+            return <li key={competitor.name} className="scorelist-item"> {index+1}. <b>{competitor.name}</b> <span>{competitor.score}p</span></li>
         } else {
-            return <li key={competitor.name} className="scorelist-item"> 0{index+1}. <b>{" " + competitor.name}</b>: {competitor.score} poäng </li>
+            return <li key={competitor.name} className="scorelist-item"> 0{index+1}. <b>{" " + competitor.name}</b> <span>{competitor.score}p </span></li>
         }
         
     });
-    console.log(scores);
 
     return (
         <div className="scoreboard">

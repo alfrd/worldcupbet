@@ -17,7 +17,12 @@ body {
   -webkit-padding-start: 0;
 }
 .scorelist-item {
+  width: 100%;
   padding-top: 0.25em;
+}
+
+.scorelist-item span {
+  float: right;
 }
 
 
@@ -34,7 +39,8 @@ body {
 .nextgame {
   min-width: 300px;
   float: left;
-  margin: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 .game {
