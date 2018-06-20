@@ -36,7 +36,7 @@ class App extends Component {
       <div className="app">
 
         <NextGame 
-          gameNbr = {this.state.facit.length-1}
+          gameNbr = {this.state.facit.length}
           teams = {groupGames[this.state.facit.length-1]}
           competitors = {competitors} />
 

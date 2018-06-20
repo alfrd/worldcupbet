@@ -10,10 +10,10 @@ const NextGame = (props) => {
     var bettare2 = [];
     
     props.competitors.map((bet) => {
-        if(bet[props.gameNbr-1] === 1 ) {
+        if(bet[props.gameNbr+1] === 1 ) {
             ett += 1;
             bettare1.push(bet[0]);
-        } else if (bet[props.gameNbr-1] === "x") {
+        } else if (bet[props.gameNbr+1] === "x") {
             kryss += 1;
             bettareX.push(bet[0]);
         } else {
@@ -21,8 +21,6 @@ const NextGame = (props) => {
             bettare2.push(bet[0]);
         }
     });
-
-    console.log(bettare1);
 
     const bettare1List = bettare1.map((bettare) => {
         return <li className="bettare-item">{bettare}</li>
