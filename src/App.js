@@ -5,7 +5,7 @@ import Scoreboard from './components/scoreboard';
 import NextGame from './components/nextgame';
 import * as bets from './bets';
 
-const facit = ["Facit",1,2,2,"x",1,"x",2,1,2,2,"x",1,1,2,2,2,1,1]
+const facit = ["Facit",1,2,2,"x",1,"x",2,1,2,2,"x",1,1,2,2,2,1,1,1]
 
 class App extends Component {
   constructor(props) {
