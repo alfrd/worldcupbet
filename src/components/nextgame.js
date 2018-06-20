@@ -26,7 +26,7 @@ const NextGame = (props) => {
             break;
         }
     }
-    console.log();
+    
     const teams = nextGame.home_team.code + "-" + nextGame.away_team.code;
 
     var ett = 0;

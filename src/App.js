@@ -44,6 +44,8 @@ class App extends Component {
       .then(response => { 
         response.json().then((jsonData) => {
           this.setState({ matchData: jsonData});
+
+          this.updateResults();
         });
       });
   }
@@ -58,7 +60,25 @@ class App extends Component {
   }
 
   updateResults() {
-    
+    var gamesPlayed = this.state.facit.length - 1
+    console.log(this.state.matchData[gamesPlayed]);
+    if(this.state.matchData[gamesPlayed].status === "in progress") {
+      console.log("Game in progress");
+      gamesPlayed -= 1
+    }
+    gamesPlayed -= 1; 
+    var updatedFacit = ["Facit"];
+    for(var i = 0; i < gamesPlayed; i++) {
+      if(this.state.matchData[i].winner_code === this.state.matchData[i].home_team.code) {
+        updatedFacit[i+1] = 1;
+      } else if(this.state.matchData[i].winner_code === this.state.matchData[i].away_team.code) {
+        updatedFacit[i+1] = 2;
+      } else {
+        updatedFacit[i+1] = "x";
+      }
+    }
+    this.setState({facit: updatedFacit})
+    console.log(updatedFacit)
   }
 }
 
