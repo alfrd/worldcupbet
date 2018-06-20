@@ -28,7 +28,14 @@ const NextGame = (props) => {
     }
     
     const teams = nextGame.home_team.code + "-" + nextGame.away_team.code;
-
+    const currentScore = nextGame.home_team.goals + " - " + nextGame.away_team.goals; 
+    var currentTime = "";
+    if(nextGame.time != null) {
+        currentTime = nextGame.time;
+    } else {
+        currentTime = nextGame.datetime;
+    }
+    
     var ett = 0;
     var kryss = 0;
     var två = 0;
@@ -56,10 +63,15 @@ const NextGame = (props) => {
 
     return (
         <div className="nextgame">
+            
             <h1>Nästa match</h1>
 
             <div className="game">
+                
                 <h2>{teams}</h2>
+                <h4>{currentScore}</h4>
+                <div className="game-time">{currentTime}</div>
+                
                 <div className="ettkrysstva">
                     <div className="prediction">
                         <h3>1</h3> 
