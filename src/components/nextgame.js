@@ -8,12 +8,12 @@ const NextGame = (props) => {
     var bettare1 = [];
     var bettareX = [];
     var bettare2 = [];
-    
+
     props.competitors.map((bet) => {
-        if(bet[props.gameNbr+1] === 1 ) {
+        if(bet[props.gameNbr] === 1 ) {
             ett += 1;
             bettare1.push(bet[0]);
-        } else if (bet[props.gameNbr+1] === "x") {
+        } else if (bet[props.gameNbr] === "x") {
             kryss += 1;
             bettareX.push(bet[0]);
         } else {
