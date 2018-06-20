@@ -3,8 +3,14 @@ import PredictionList from './prediction_list';
 
 const NextGame = (props) => {
     if (props.matchData[0] == null) {
-        console.log("UNDEFINED");
-        return <div>Loading...</div>;
+        return (
+            <div className="game">
+                <h2>Loading...</h2>
+            </div>
+
+        );
+        
+        
     }
 
 
@@ -21,7 +27,7 @@ const NextGame = (props) => {
         }
     }
     console.log();
-    const teams = nextGame.home_team.code + "-" + nextGame.away_team.code
+    const teams = nextGame.home_team.code + "-" + nextGame.away_team.code;
 
     var ett = 0;
     var kryss = 0;

@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.matchData();
+    this.fetchMatchData();
   }
 
   render() {
@@ -39,14 +39,12 @@ class App extends Component {
     );
   }
 
-  matchData() {
-    fetch('http://worldcup.sfg.io/matches')
+  fetchMatchData() {
+    fetch('https://world-cup-json.herokuapp.com/matches/')
       .then(response => { 
         response.json().then((jsonData) => {
           this.setState({ matchData: jsonData});
         });
-        
-        
       });
   }
 
@@ -57,6 +55,10 @@ class App extends Component {
         return game
       }
     }
+  }
+
+  updateResults() {
+    
   }
 }
 
