@@ -29,13 +29,15 @@ const NextGame = (props) => {
     
     const teams = nextGame.home_team.code + "-" + nextGame.away_team.code;
     const currentScore = nextGame.home_team.goals + " - " + nextGame.away_team.goals; 
+    var gameStatus = "Nästa match";
     var currentTime = "";
     if(nextGame.time != null) {
         currentTime = nextGame.time;
+        gameStatus = "Pågående match";
     } else {
         currentTime = nextGame.datetime;
         console.log(currentTime.substring(6,7))
-
+        
         var date = new Date(Date.UTC(currentTime.substring(0,4), currentTime.substring(5,7)-1, currentTime.substring(8,10), currentTime.substring(11,13), 0, 0));
         console.log(date)
         currentTime = date.toLocaleDateString().substring(0,5) + " " + date.toLocaleTimeString().substring(0,5);
@@ -70,7 +72,7 @@ const NextGame = (props) => {
     return (
         <div className="nextgame">
             
-            <h1>Nästa match</h1>
+            <h1>{gameStatus}</h1>
 
             <div className="game">
                 
