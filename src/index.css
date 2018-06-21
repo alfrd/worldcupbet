@@ -77,8 +77,9 @@ body {
 }
 
 .alla-matcher {
+  clear: both;
   float: left;
-  width: 70%;
+  width: 400px;
   display: block;
   overflow: auto;
 }
