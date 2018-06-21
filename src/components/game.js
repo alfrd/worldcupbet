@@ -13,7 +13,7 @@ const Game = (props) => {
     var gameNbr = props.gamesPlayed;
     var game = props.matchData[gameNbr];
     console.log(game);
-    if(game.home_team.code === "TBD") {
+    if(!game || game.home_team.code === "TBD") {
 
         return <div></div>;
     }
