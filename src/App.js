@@ -15,6 +15,7 @@ class App extends Component {
 
     this.state = {
       facit: facit,
+      gamesPlayed: 0,
       matchData: {}
     }
 
@@ -56,20 +57,22 @@ class App extends Component {
     for(var i = 0; i < this.state.matchData.length; i++) {
       var game = this.state.matchData[i];
       if(game.status === "in progress" || game.status === "future") {
+        this.setState({gamesPlayed: i + 1});
+        console.log("Games played: " + this.state.gamesPlayed);
         return game
       }
     }
   }
 
   updateResults() {
-    var gamesPlayed = this.state.facit.length
-    console.log(this.state.matchData[gamesPlayed]);
-    if(this.state.matchData[gamesPlayed].status === "in progress") {
+    this.getNextGame();
+    console.log(this.state.matchData[this.state.gamesPlayed]);
+    if(this.state.matchData[this.state.gamesPlayed].status === "in progress") {
       console.log("Game in progress");
       //gamesPlayed -= 1
     } 
     var updatedFacit = ["Facit"];
-    for(var i = 0; i < gamesPlayed; i++) {
+    for(var i = 0; i < this.state.gamesPlayed; i++) {
       if(this.state.matchData[i].winner_code === this.state.matchData[i].home_team.code) {
         updatedFacit[i+1] = 1;
       } else if(this.state.matchData[i].winner_code === this.state.matchData[i].away_team.code) {
