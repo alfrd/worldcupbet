@@ -66,7 +66,7 @@ class App extends Component {
     console.log(this.state.matchData[gamesPlayed]);
     if(this.state.matchData[gamesPlayed].status === "in progress") {
       console.log("Game in progress");
-      gamesPlayed -= 1
+      //gamesPlayed -= 1
     } 
     var updatedFacit = ["Facit"];
     for(var i = 0; i < gamesPlayed; i++) {
