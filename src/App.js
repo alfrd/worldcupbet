@@ -7,6 +7,8 @@ import * as bets from './bets';
 
 const facit = ["Facit",1,2,2,"x",1,"x",2,1,2,2,"x",1,1,2,2,2,1,1,1,2]
 
+//var facit = ["Facit",1,2,2,"x",1,"x",2,1,2,2,"x",1,1,2,2,2,1]
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -34,7 +36,7 @@ class App extends Component {
 
         <Scoreboard 
           competitors={bets.competitors}
-          results={facit} />
+          results={this.state.facit} />
       </div>
     );
   }
@@ -65,8 +67,7 @@ class App extends Component {
     if(this.state.matchData[gamesPlayed].status === "in progress") {
       console.log("Game in progress");
       gamesPlayed -= 1
-    }
-    gamesPlayed -= 1; 
+    } 
     var updatedFacit = ["Facit"];
     for(var i = 0; i < gamesPlayed; i++) {
       if(this.state.matchData[i].winner_code === this.state.matchData[i].home_team.code) {
