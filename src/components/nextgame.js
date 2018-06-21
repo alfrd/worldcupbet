@@ -15,13 +15,24 @@ const NextGame = (props) => {
     var gameNbr = props.gamesPlayed;
     var nextGame = props.matchData[gameNbr];
     
-    const teams = nextGame.home_team.code + "-" + nextGame.away_team.code;
+    const teams = nextGame.home_team.code + " - " + nextGame.away_team.code;
     const currentScore = nextGame.home_team.goals + " - " + nextGame.away_team.goals; 
     var gameStatus = "Nästa match";
     var currentTime = "";
+    var cEtt = <h3>1</h3>;
+    var cKryss = <h3>x</h3>;
+    var cTvå = <h3>2</h3>;
+
     if(nextGame.time != null) {
         currentTime = nextGame.time;
         gameStatus = "Pågående match";
+        if(nextGame.winner_code === nextGame.home_team.code) {
+            cEtt = <h3 className="current-result">1</h3>;
+          } else if(nextGame.winner_code === nextGame.away_team.code) {
+            cTvå = <h3 className="current-result">2</h3>;
+          } else {
+            cKryss = <h3 className="current-result">x</h3>;
+          }
     } else {
         currentTime = nextGame.datetime;
         var date = new Date(Date.UTC(currentTime.substring(0,4), currentTime.substring(5,7)-1, currentTime.substring(8,10), currentTime.substring(11,13), 0, 0));
@@ -37,7 +48,6 @@ const NextGame = (props) => {
     var bettare2 = [];
 
     props.competitors.map((bet) => {
-        console.log(bet[0] + " gissade " + bet[gameNbr + 1]);
         if(bet[gameNbr + 1] === 1 ) {
             ett += 1;
             bettare1.push(bet[0]);
@@ -67,19 +77,19 @@ const NextGame = (props) => {
                 
                 <div className="ettkrysstva">
                     <div className="prediction">
-                        <h3>1</h3> 
+                        {cEtt}
                         {ett}%
                         <PredictionList bettare = {bettare1} />
                     </div>
                     
                     <div className="prediction">
-                        <h3>x</h3> 
+                        {cKryss}
                         {kryss}%
                         <PredictionList bettare = {bettareX} />
                     </div>
 
                     <div className="prediction">
-                        <h3>2</h3> 
+                        {cTvå}
                         {två}%
                         <PredictionList bettare = {bettare2} />
                     </div>

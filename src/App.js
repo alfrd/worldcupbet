@@ -57,7 +57,6 @@ class App extends Component {
       var game = this.state.matchData[i];
       if(game.status === "in progress" || game.status === "future") {
         this.setState({gamesPlayed: i});
-        console.log("Games played: " + this.state.gamesPlayed);
         return game
       }
     }
@@ -81,7 +80,6 @@ class App extends Component {
       }
     }
     this.setState({facit: updatedFacit})
-    console.log(updatedFacit)
   }
 }
 
