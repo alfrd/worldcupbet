@@ -1,40 +1,49 @@
 import React, { Component } from 'react';
 import PredictionList from './prediction_list';
 
-const NextGame = (props) => {
+const Game = (props) => {
     if (props.matchData[0] == null) {
         return (
             <div className="game">
                 <h2>Loading...</h2>
             </div>
 
-        );
-        
-        
+        );   
     }
     var gameNbr = props.gamesPlayed;
-    var nextGame = props.matchData[gameNbr];
+    var game = props.matchData[gameNbr];
+    console.log(game);
+    if(game.home_team.code === "TBD") {
+
+        return <div></div>;
+    }
     
-    const teams = nextGame.home_team.code + " - " + nextGame.away_team.code;
-    const currentScore = nextGame.home_team.goals + " - " + nextGame.away_team.goals; 
-    var gameStatus = "Nästa match";
+    const teams = game.home_team.code + " - " + game.away_team.code;
+    const currentScore = game.home_team.goals + " - " + game.away_team.goals; 
+    var gameStatus = "Kommande match";
     var currentTime = "";
     var cEtt = <h3>1</h3>;
     var cKryss = <h3>x</h3>;
     var cTvå = <h3>2</h3>;
 
-    if(nextGame.time != null) {
-        currentTime = nextGame.time;
+
+    if(game.status === "completed") {
+        var gameStatus = "";
+        currentTime = game.datetime;
+        var date = new Date(Date.UTC(currentTime.substring(0,4), currentTime.substring(5,7)-1, currentTime.substring(8,10), currentTime.substring(11,13), 0, 0));
+        currentTime = date.toString().substring(0,11) + date.toString().substring(16, 21)
+    } else if(game.status === "in progress") {
+        currentTime = game.time;
         gameStatus = "Pågående match";
-        if(nextGame.winner_code === nextGame.home_team.code) {
+        if(game.winner_code === game.home_team.code) {
             cEtt = <h3 className="current-result">1</h3>;
-          } else if(nextGame.winner_code === nextGame.away_team.code) {
+          } else if(game.winner_code === game.away_team.code) {
             cTvå = <h3 className="current-result">2</h3>;
           } else {
             cKryss = <h3 className="current-result">x</h3>;
-          }
+          } 
     } else {
-        currentTime = nextGame.datetime;
+        currentTime = game.datetime;
         var date = new Date(Date.UTC(currentTime.substring(0,4), currentTime.substring(5,7)-1, currentTime.substring(8,10), currentTime.substring(11,13), 0, 0));
         currentTime = date.toString().substring(0,11) + date.toString().substring(16, 21);
     }
@@ -65,7 +74,7 @@ const NextGame = (props) => {
     två = Math.round((två / 14)*100);
 
     return (
-        <div className="nextgame">
+        <div className="game-container">
             
             <h1>{gameStatus}</h1>
 
@@ -101,4 +110,4 @@ const NextGame = (props) => {
     
 }
 
-export default NextGame;
+export default Game;

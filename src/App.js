@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Betlist from './components/bet_list';
 import Scoreboard from './components/scoreboard';
-import NextGame from './components/nextgame';
+import Game from './components/game';
+import AllGames from './components/all_games';
 import * as bets from './bets';
 
 const facit = ["Facit",1,2,2,"x",1,"x",2,1,2,2,"x",1,1,2,2,2,1,1,1,2]
@@ -29,15 +30,25 @@ class App extends Component {
     return (
       <div className="app">
 
-        <NextGame 
+        <Game 
           gamesPlayed = {this.state.gamesPlayed}
-          teams = {bets.groupGames[this.state.facit.length-1]}
           competitors = {bets.competitors}
           matchData = {this.state.matchData} />
 
         <Scoreboard 
           competitors={bets.competitors}
           results={this.state.facit} />
+        
+        <div className = "alla-matcher">
+          <h1 className = "alla-matcher-rubrik">Alla matcher</h1>
+          
+          <AllGames 
+            competitors = {bets.competitors}
+            matchData = {this.state.matchData} />
+            
+        </div>
+        
+        
       </div>
     );
   }
