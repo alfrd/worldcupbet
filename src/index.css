@@ -84,12 +84,12 @@ body {
   }
 
   .game-container {
-    width: 92vw;
+    width: 100vw;
     margin: 0 auto;
   }
 
   .game {
-    width: 84vw;
+    width: 100%;
     text-align: center;
     
   }
