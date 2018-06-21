@@ -30,7 +30,7 @@ class App extends Component {
       <div className="app">
 
         <NextGame 
-          gameNbr = {this.state.facit.length}
+          gamesPlayed = {this.state.gamesPlayed}
           teams = {bets.groupGames[this.state.facit.length-1]}
           competitors = {bets.competitors}
           matchData = {this.state.matchData} />
@@ -47,7 +47,6 @@ class App extends Component {
       .then(response => { 
         response.json().then((jsonData) => {
           this.setState({ matchData: jsonData});
-
           this.updateResults();
         });
       });
@@ -57,7 +56,7 @@ class App extends Component {
     for(var i = 0; i < this.state.matchData.length; i++) {
       var game = this.state.matchData[i];
       if(game.status === "in progress" || game.status === "future") {
-        this.setState({gamesPlayed: i + 1});
+        this.setState({gamesPlayed: i});
         console.log("Games played: " + this.state.gamesPlayed);
         return game
       }

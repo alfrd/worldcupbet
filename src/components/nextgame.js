@@ -12,20 +12,8 @@ const NextGame = (props) => {
         
         
     }
-
-
-    var nextGame = {};
-    var gameNbr = 0;
-
-
-    for(var i = 0; i < props.matchData.length; i++) {
-        var game = props.matchData[i];
-        if(game.status === "in progress" || game.status === "future") {
-            nextGame = game;
-            gameNbr = i+1;
-            break;
-        }
-    }
+    var gameNbr = props.gamesPlayed;
+    var nextGame = props.matchData[gameNbr];
     
     const teams = nextGame.home_team.code + "-" + nextGame.away_team.code;
     const currentScore = nextGame.home_team.goals + " - " + nextGame.away_team.goals; 
@@ -36,12 +24,8 @@ const NextGame = (props) => {
         gameStatus = "Pågående match";
     } else {
         currentTime = nextGame.datetime;
-        console.log(currentTime.substring(6,7))
-        
         var date = new Date(Date.UTC(currentTime.substring(0,4), currentTime.substring(5,7)-1, currentTime.substring(8,10), currentTime.substring(11,13), 0, 0));
-        console.log(date)
-        currentTime = date.toLocaleDateString().substring(0,5) + " " + date.toLocaleTimeString().substring(0,5);
-        //var currentDateTimeCentralTimeZone = new Date(currentTime.toLocaleString('de-DE'));
+        currentTime = date.toString().substring(0,11) + date.toString().substring(16, 21);
     }
     
     var ett = 0;
@@ -53,10 +37,11 @@ const NextGame = (props) => {
     var bettare2 = [];
 
     props.competitors.map((bet) => {
-        if(bet[gameNbr] === 1 ) {
+        console.log(bet[0] + " gissade " + bet[gameNbr + 1]);
+        if(bet[gameNbr + 1] === 1 ) {
             ett += 1;
             bettare1.push(bet[0]);
-        } else if (bet[gameNbr] === "x") {
+        } else if (bet[gameNbr + 1] === "x") {
             kryss += 1;
             bettareX.push(bet[0]);
         } else {
