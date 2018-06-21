@@ -34,6 +34,12 @@ const NextGame = (props) => {
         currentTime = nextGame.time;
     } else {
         currentTime = nextGame.datetime;
+        console.log(currentTime.substring(6,7))
+
+        var date = new Date(Date.UTC(currentTime.substring(0,4), currentTime.substring(5,7)-1, currentTime.substring(8,10), currentTime.substring(11,13), 0, 0));
+        console.log(date)
+        currentTime = date.toLocaleDateString().substring(0,5) + " " + date.toLocaleTimeString().substring(0,5);
+        //var currentDateTimeCentralTimeZone = new Date(currentTime.toLocaleString('de-DE'));
     }
     
     var ett = 0;
