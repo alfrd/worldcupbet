@@ -62,7 +62,7 @@ class App extends Component {
   }
 
   updateResults() {
-    var gamesPlayed = this.state.facit.length - 1
+    var gamesPlayed = this.state.facit.length
     console.log(this.state.matchData[gamesPlayed]);
     if(this.state.matchData[gamesPlayed].status === "in progress") {
       console.log("Game in progress");
