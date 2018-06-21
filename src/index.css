@@ -16,6 +16,7 @@ body {
   list-style-type: none;
   -webkit-padding-start: 0;
 }
+
 .scorelist-item {
   width: 100%;
   padding-top: 0.25em;
@@ -73,6 +74,30 @@ body {
 }
 
 .current-result {
+
+}
+
+@media only screen and (max-width: 600px) {
+  .app {
+    margin: 0 auto;
+    width: 100vw;
+    padding: 8vw;
+  }
+
+  .game-container {
+    width: 92vw;
+    margin: 0 auto;
+  }
+
+  .game {
+    width: 84vw;
+    text-align: center;
+    
+  }
+
+  .scoreboard {
+    margin: 0 auto;
+  }
 
 }
 
