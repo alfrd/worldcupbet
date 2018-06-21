@@ -4,6 +4,7 @@ import Betlist from './components/bet_list';
 import Scoreboard from './components/scoreboard';
 import Game from './components/game';
 import AllGames from './components/all_games';
+import Attondel from './components/attondel'
 import * as bets from './bets';
 
 const facit = ["Facit",1,2,2,"x",1,"x",2,1,2,2,"x",1,1,2,2,2,1,1,1,2]
@@ -38,6 +39,8 @@ class App extends Component {
         <Scoreboard 
           competitors={bets.competitors}
           results={this.state.facit} />
+        
+        <Attondel />
         
         <div className = "alla-matcher">
           <h1 className = "alla-matcher-rubrik">Alla matcher</h1>
